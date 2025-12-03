@@ -19,9 +19,9 @@ const Input = Schema.TemplateLiteralParser(
 );
 
 const main = Effect.gen(function* () {
-  yield* Effect.tryOrElse(Effect.partition(tries, (n: string) => {
-    Effect.decodeUnknown(Input)(n);
-  });
-});
+  yield* Effect(Effect.partition(tries, (n: string) => {
+    Schema.decodeUnknown(Input)(n);
+  })
+);
 
 console.log(Schema.decodeUnknown(Input)("L68"));
